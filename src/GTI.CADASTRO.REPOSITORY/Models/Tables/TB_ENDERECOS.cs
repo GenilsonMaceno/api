@@ -9,12 +9,15 @@ namespace GTI.CADASTRO.REPOSITORY.Models.Tables
     public class TB_ENDERECOS
     {
         public decimal ENDERECO_ID { get; set; }
-        public decimal CEP { get; set; }
-        public decimal LOGRADOURO { get; set; }
-        public decimal NUMERO { get; set; }
-        public decimal COMPLEMENTO { get; set; }
-        public decimal BAIRRO { get; set; }
-        public decimal CIDADE { get; set; }
-        public decimal UF { get; set; }
+        public string CEP { get; set; }
+        public string LOGRADOURO { get; set; }
+        public string NUMERO { get; set; }
+        public string COMPLEMENTO { get; set; }
+        public string BAIRRO { get; set; }
+        public string CIDADE { get; set; }
+        public string UF { get; set; }
+        public decimal CLIENTE_ID { get; set; }
+
+        public virtual TB_CLIENTES TB_CLIENTES { get; set; }
     }
 }

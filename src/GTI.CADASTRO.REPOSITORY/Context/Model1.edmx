@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GTI_DATA_SERVERModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_CLIENTES">
+          <Key>
+            <PropertyRef Name="CLIENTE_ID" />
+          </Key>
+          <Property Name="CLIENTE_ID" Type="numeric" Precision="15" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CPF" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NOME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RG" Type="varchar" MaxLength="20" />
+          <Property Name="DATA_EXPEDICAO" Type="datetime" />
+          <Property Name="ORGAO_EXPEDICAO" Type="varchar" MaxLength="20" />
+          <Property Name="UF_EXPEDICAO" Type="char" MaxLength="2" />
+          <Property Name="DATA_NASCIMENTO" Type="datetime" Nullable="false" />
+          <Property Name="SEXO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ESTADO_CIVIL" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_CLIENTES_ENDERECOS">
+          <Key>
+            <PropertyRef Name="ENDERECO_ID" />
+          </Key>
+          <Property Name="ENDERECO_ID" Type="numeric" Precision="15" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CEP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LOGRADOURO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NUMERO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="COMPLEMENTO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="BAIRRO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CIDADE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UF" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="CLIENTE_ID" Type="numeric" Precision="15" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TB_CLIENTES_ENDERECOS_TB_CLIENTES">
+          <End Role="TB_CLIENTES" Type="Self.TB_CLIENTES" Multiplicity="1" />
+          <End Role="TB_CLIENTES_ENDERECOS" Type="Self.TB_CLIENTES_ENDERECOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTES">
+              <PropertyRef Name="CLIENTE_ID" />
+            </Principal>
+            <Dependent Role="TB_CLIENTES_ENDERECOS">
+              <PropertyRef Name="CLIENTE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GTI_DATA_SERVERModelStoreContainer">
+          <EntitySet Name="TB_CLIENTES" EntityType="Self.TB_CLIENTES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_CLIENTES_ENDERECOS" EntityType="Self.TB_CLIENTES_ENDERECOS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TB_CLIENTES_ENDERECOS_TB_CLIENTES" Association="Self.FK_TB_CLIENTES_ENDERECOS_TB_CLIENTES">
+            <End Role="TB_CLIENTES" EntitySet="TB_CLIENTES" />
+            <End Role="TB_CLIENTES_ENDERECOS" EntitySet="TB_CLIENTES_ENDERECOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GTI_DATA_SERVERModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TB_CLIENTES">
+          <Key>
+            <PropertyRef Name="CLIENTE_ID" />
+          </Key>
+          <Property Name="CLIENTE_ID" Type="Decimal" Precision="15" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CPF" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_EXPEDICAO" Type="DateTime" Precision="3" />
+          <Property Name="ORGAO_EXPEDICAO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UF_EXPEDICAO" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="DATA_NASCIMENTO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SEXO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO_CIVIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TB_CLIENTES_ENDERECOS" Relationship="Self.FK_TB_CLIENTES_ENDERECOS_TB_CLIENTES" FromRole="TB_CLIENTES" ToRole="TB_CLIENTES_ENDERECOS" />
+        </EntityType>
+        <EntityType Name="TB_CLIENTES_ENDERECOS">
+          <Key>
+            <PropertyRef Name="ENDERECO_ID" />
+          </Key>
+          <Property Name="ENDERECO_ID" Type="Decimal" Precision="15" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CEP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LOGRADOURO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUMERO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COMPLEMENTO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BAIRRO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CIDADE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UF" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CLIENTE_ID" Type="Decimal" Precision="15" Scale="0" Nullable="false" />
+          <NavigationProperty Name="TB_CLIENTES" Relationship="Self.FK_TB_CLIENTES_ENDERECOS_TB_CLIENTES" FromRole="TB_CLIENTES_ENDERECOS" ToRole="TB_CLIENTES" />
+        </EntityType>
+        <Association Name="FK_TB_CLIENTES_ENDERECOS_TB_CLIENTES">
+          <End Role="TB_CLIENTES" Type="Self.TB_CLIENTES" Multiplicity="1" />
+          <End Role="TB_CLIENTES_ENDERECOS" Type="Self.TB_CLIENTES_ENDERECOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTES">
+              <PropertyRef Name="CLIENTE_ID" />
+            </Principal>
+            <Dependent Role="TB_CLIENTES_ENDERECOS">
+              <PropertyRef Name="CLIENTE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GTI_DATA_SERVEREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_CLIENTES" EntityType="Self.TB_CLIENTES" />
+          <EntitySet Name="TB_CLIENTES_ENDERECOS" EntityType="Self.TB_CLIENTES_ENDERECOS" />
+          <AssociationSet Name="FK_TB_CLIENTES_ENDERECOS_TB_CLIENTES" Association="Self.FK_TB_CLIENTES_ENDERECOS_TB_CLIENTES">
+            <End Role="TB_CLIENTES" EntitySet="TB_CLIENTES" />
+            <End Role="TB_CLIENTES_ENDERECOS" EntitySet="TB_CLIENTES_ENDERECOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GTI_DATA_SERVERModelStoreContainer" CdmEntityContainer="GTI_DATA_SERVEREntities">
+          <EntitySetMapping Name="TB_CLIENTES">
+            <EntityTypeMapping TypeName="GTI_DATA_SERVERModel.TB_CLIENTES">
+              <MappingFragment StoreEntitySet="TB_CLIENTES">
+                <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+                <ScalarProperty Name="RG" ColumnName="RG" />
+                <ScalarProperty Name="DATA_EXPEDICAO" ColumnName="DATA_EXPEDICAO" />
+                <ScalarProperty Name="ORGAO_EXPEDICAO" ColumnName="ORGAO_EXPEDICAO" />
+                <ScalarProperty Name="UF_EXPEDICAO" ColumnName="UF_EXPEDICAO" />
+                <ScalarProperty Name="DATA_NASCIMENTO" ColumnName="DATA_NASCIMENTO" />
+                <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+                <ScalarProperty Name="ESTADO_CIVIL" ColumnName="ESTADO_CIVIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_CLIENTES_ENDERECOS">
+            <EntityTypeMapping TypeName="GTI_DATA_SERVERModel.TB_CLIENTES_ENDERECOS">
+              <MappingFragment StoreEntitySet="TB_CLIENTES_ENDERECOS">
+                <ScalarProperty Name="ENDERECO_ID" ColumnName="ENDERECO_ID" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="LOGRADOURO" ColumnName="LOGRADOURO" />
+                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+                <ScalarProperty Name="COMPLEMENTO" ColumnName="COMPLEMENTO" />
+                <ScalarProperty Name="BAIRRO" ColumnName="BAIRRO" />
+                <ScalarProperty Name="CIDADE" ColumnName="CIDADE" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

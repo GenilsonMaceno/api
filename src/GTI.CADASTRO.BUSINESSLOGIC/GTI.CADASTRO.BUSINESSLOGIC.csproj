@@ -49,5 +49,11 @@
     <Folder Include="Helpers\" />
     <Folder Include="Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GTI.CADASTRO.REPOSITORY\GTI.CADASTRO.REPOSITORY.csproj">
+      <Project>{6d8996b8-8465-435f-9c5f-208846265ccd}</Project>
+      <Name>GTI.CADASTRO.REPOSITORY</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
