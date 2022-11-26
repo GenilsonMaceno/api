@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GTI.CADASTRO.BUSINESSLOGIC.Models
 {
-    public class Endereco
+    public class ClienteEndereco
     {
         public decimal EnderecoId { get; set; }
         public string CEP { get; set; }
@@ -16,5 +16,6 @@ namespace GTI.CADASTRO.BUSINESSLOGIC.Models
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string UF { get; set; }
+        public decimal ClienteId { get; set; }
     }
 }

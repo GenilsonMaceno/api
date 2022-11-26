@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CadastroOutput.cs" />
     <Compile Include="Models\Cliente.cs" />
-    <Compile Include="Models\Endereco.cs" />
+    <Compile Include="Models\ClienteEndereco.cs" />
+    <Compile Include="Models\Output.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -50,10 +52,6 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GTI.CADASTRO.REPOSITORY\GTI.CADASTRO.REPOSITORY.csproj">
-      <Project>{6d8996b8-8465-435f-9c5f-208846265ccd}</Project>
-      <Name>GTI.CADASTRO.REPOSITORY</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

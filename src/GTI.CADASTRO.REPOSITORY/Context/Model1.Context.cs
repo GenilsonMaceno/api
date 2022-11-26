@@ -9,6 +9,7 @@
 
 namespace GTI.CADASTRO.REPOSITORY.Context
 {
+    using GTI.CADASTRO.REPOSITORY.Models.Tables;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;

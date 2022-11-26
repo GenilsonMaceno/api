@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GTI.CADASTRO.REPOSITORY.Models.Tables
 {
-    public class TB_ENDERECOS
+    public class TB_CLIENTES_ENDERECOS
     {
         public decimal ENDERECO_ID { get; set; }
         public string CEP { get; set; }
