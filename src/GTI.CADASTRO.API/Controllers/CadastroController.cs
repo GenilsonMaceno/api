@@ -11,21 +11,30 @@ using System.Web.Http;
 
 namespace GTI.CADASTRO.API.Controllers
 {
-    [RoutePrefix("/api/cadastro")]
+    [RoutePrefix("api/cadastro")]
     public class CadastroController : ApiController
     {
         private readonly IClienteService _clienteService;
-        private CadastroOutput _Output;
+        private readonly CadastroOutput _Output;
 
         public CadastroController(IClienteService clienteService)
         {
             _clienteService = clienteService;
+            _Output = new CadastroOutput();
+        }
+
+        [HttpGet]
+        [Route("teste")]
+        public HttpResponseMessage teste()
+        {
+
+            return Request.CreateResponse(HttpStatusCode.OK, new {teste = "OK"});
         }
 
         // GET: Cadastro
         [HttpPost]
-        [Route("Cadastrar/cliente")]
-        public async Task<HttpResponseMessage> Cadastrar(Cliente input)
+        [Route("cliente")]
+        public async Task<HttpResponseMessage> Cliente(Cliente input)
         {
 
             try

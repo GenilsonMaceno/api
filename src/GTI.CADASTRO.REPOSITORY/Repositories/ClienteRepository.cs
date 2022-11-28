@@ -12,9 +12,9 @@ namespace GTI.CADASTRO.REPOSITORY.Repositories
 {
     public class ClienteRepository : IClienteRepository
     {
-        private GTI_DATA_SERVEREntities _context;
+        private DataContext _context;
 
-        public ClienteRepository(GTI_DATA_SERVEREntities context)
+        public ClienteRepository(DataContext context)
         {
             _context = context;
         }
@@ -38,10 +38,10 @@ namespace GTI.CADASTRO.REPOSITORY.Repositories
                 };
 
 
-                var teste = _context.TB_CLIENTES.Add(tbCliente);
-                var ret =  await _context.SaveChangesAsync();
+                var entity = _context.TB_CLIENTES.Add(tbCliente);
+                var result =  await _context.SaveChangesAsync();
 
-                if (ret != 0)
+                if (result > 0)
                 {
                     var tbClienteEndereco = new TB_CLIENTES_ENDERECOS()
                     {
@@ -52,14 +52,14 @@ namespace GTI.CADASTRO.REPOSITORY.Repositories
                         LOGRADOURO = cliente.Endereco.Logradouro,
                         NUMERO = cliente.Endereco.Numero,
                         UF = cliente.Endereco.UF,
-                        CLIENTE_ID = ret
+                        CLIENTE_ID = entity.CLIENTE_ID
                     };
 
                     _context.TB_CLIENTES_ENDERECOS.Add(tbClienteEndereco);
-                    ret = await _context.SaveChangesAsync();
+                    result = await _context.SaveChangesAsync();
                 }
 
-                return ret;
+                return result;
 
             }
             catch (Exception)
