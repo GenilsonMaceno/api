@@ -12,13 +12,13 @@ namespace GTI.CADASTRO.REPOSITORY.Context
 {
     public class DataContext : DbContext
     {
-        public DataContext() : base("name=GTI_DATA_SERVEREntities")
+        public DataContext() : base("name=GTI_DATA_SERVER")
         {
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            base.OnModelCreating(modelBuilder);
         }
 
         public virtual DbSet<TB_CLIENTES> TB_CLIENTES { get; set; }

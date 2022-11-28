@@ -1,6 +1,8 @@
 ﻿using GTI.CADASTRO.REPOSITORY.Context;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,8 @@ namespace GTI.CADASTRO.REPOSITORY.Models.Tables
             this.TB_CLIENTES_ENDERECOS = new HashSet<TB_CLIENTES_ENDERECOS>();
         }
 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public decimal CLIENTE_ID { get; set; }
         public string CPF { get; set; }
         public string NOME { get; set; }
